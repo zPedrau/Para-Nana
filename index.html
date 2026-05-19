@@ -4,397 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para a Nana</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --navy: #1e2d45;
-            --navy-soft: #2f4159;
-            --amber: #c9a06a;
-            --amber-light: #e8d4b8;
-            --cream: #faf7f2;
-            --cream-dark: #f0ebe3;
-            --text: #1e2d45;
-            --text-muted: #5a6578;
-            --card-bg: rgba(255, 255, 255, 0.82);
-            --card-border: rgba(201, 160, 106, 0.35);
-            --shadow: 0 12px 40px rgba(30, 45, 69, 0.12);
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
+        /* Tema Roxo e Azul */
         body {
             margin: 0;
-            padding: 24px 16px 80px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 400;
-            color: var(--text);
-            min-height: 100vh;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #b18bff 0%, #9b6dff 50%, #d8c4ff 100%);
+            background-attachment: fixed;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
             text-align: center;
             overflow-x: hidden;
-            background-color: var(--cream);
         }
 
-        /* Fundo com retrato sutil em todas as telas */
+        /* Retrato sutil no fundo de todas as páginas */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background: url('assets/nana-portrait.png') center center / cover no-repeat;
-            opacity: 0.14;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(
-                160deg,
-                rgba(250, 247, 242, 0.94) 0%,
-                rgba(248, 243, 236, 0.88) 45%,
-                rgba(240, 235, 227, 0.92) 100%
-            );
+            opacity: 0.12;
             z-index: -1;
             pointer-events: none;
         }
 
         .page {
             display: none;
-            width: 92%;
-            max-width: 720px;
-            padding: 48px 40px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(12px);
+            width: 80%;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .active {
             display: block;
-            animation: fadeIn 0.8s ease-out;
+            animation: fadeIn 1s ease-in;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(16px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .eyebrow {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--amber);
-            margin: 0 0 12px;
-        }
-
         h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 2.75rem);
-            font-weight: 600;
-            color: var(--navy);
-            margin: 0 0 20px;
-            line-height: 1.2;
+            font-size: 2.5em;
+            margin-bottom: 20px;
         }
 
         p {
-            font-size: 1.05rem;
-            line-height: 1.75;
-            color: var(--text-muted);
-            margin: 0 0 16px;
-        }
-
-        p.lead {
-            font-size: 1.15rem;
-            color: var(--navy-soft);
+            font-size: 1.2em;
+            line-height: 1.6;
         }
 
         .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
-            color: var(--cream);
+            background-color: #ff4081;
+            color: white;
             border: none;
-            padding: 14px 32px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            border-radius: 999px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 30px;
             cursor: pointer;
-            margin-top: 24px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 16px rgba(30, 45, 69, 0.2);
+            margin-top: 20px;
+            transition: background-color 0.3s;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(30, 45, 69, 0.25);
-        }
-
-        .btn-accent {
-            background: linear-gradient(135deg, var(--amber) 0%, #b8925a 100%);
-            color: var(--navy);
-            box-shadow: 0 4px 16px rgba(201, 160, 106, 0.35);
-        }
-
-        .btn-accent:hover {
-            box-shadow: 0 8px 24px rgba(201, 160, 106, 0.45);
+            background-color: #f50057;
         }
 
         .likes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 16px;
-            margin: 32px 0;
-            text-align: left;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            margin-bottom: 30px;
         }
 
         .like-item {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid var(--card-border);
-            padding: 12px;
-            border-radius: 14px;
-            font-size: 0.88rem;
-            color: var(--navy-soft);
-            line-height: 1.4;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .like-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(30, 45, 69, 0.08);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1em;
         }
 
         .likes-grid .photo-placeholder {
-            height: 110px;
+            height: 120px;
             object-fit: contain;
-            background: var(--cream-dark);
-            padding: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px;
         }
 
         .photo-placeholder {
             width: 100%;
-            height: 96px;
-            border-radius: 10px;
+            height: 100px;
+            border-radius: 8px;
             margin-bottom: 10px;
             object-fit: cover;
-            border: 1px solid var(--card-border);
-        }
-
-        .photo-placeholder.empty {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--cream-dark), var(--amber-light));
-            color: var(--text-muted);
-            font-size: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .page-3-photo {
             width: 100%;
-            max-width: 340px;
+            max-width: 280px;
             height: auto;
-            max-height: 300px;
+            max-height: 400px;
             object-fit: contain;
-            background: var(--cream-dark);
-            padding: 12px;
-            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 8px;
+            margin: 10px auto;
             display: block;
-            border-radius: 16px;
-            border: 1px solid var(--card-border);
-        }
-
-        .caption {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1.25rem;
-            color: var(--amber);
-            margin-top: -8px;
         }
 
         .invite-buttons {
             position: relative;
-            min-height: 140px;
-            margin-top: 36px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
+            height: 150px;
+            margin-top: 40px;
         }
 
         #btn-yes {
-            background: linear-gradient(135deg, #3d6b52 0%, #2d5240 100%);
-            margin-top: 0;
+            background-color: #4caf50;
+            margin-right: 20px;
+        }
+
+        #btn-yes:hover {
+            background-color: #388e3c;
         }
 
         #btn-no {
-            background: linear-gradient(135deg, #9e5a5a 0%, #7d4545 100%);
-            position: relative;
-            margin-top: 0;
+            background-color: #f44336;
+            position: absolute;
         }
 
         .music-btn {
             position: fixed;
-            right: 20px;
-            bottom: 20px;
+            right: 16px;
+            bottom: 16px;
             z-index: 9999;
-            padding: 10px 18px;
-            border-radius: 999px;
-            border: 1px solid var(--card-border);
-            background: var(--card-bg);
-            color: var(--navy);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: 24px;
+            border: none;
+            background: #7b1fa2;
+            color: #fff;
             cursor: pointer;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(8px);
-            transition: transform 0.2s;
-        }
-
-        .music-btn:hover {
-            transform: scale(1.03);
-        }
-
-        .divider {
-            width: 48px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--amber), transparent);
-            margin: 24px auto;
-        }
-
-        @media (max-width: 520px) {
-            .page {
-                padding: 32px 24px;
-            }
-
-            .likes-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
         }
     </style>
 </head>
 <body>
-    <audio id="bg-music" loop preload="auto">
+    <audio id="bg-music" loop preload="auto" playsinline>
         <source src="assets/i-can-do-it-with-a-broken-heart.mp3" type="audio/mpeg">
     </audio>
-    <button class="music-btn" onclick="startMusic()" type="button">♪ Música</button>
+    <button class="music-btn" id="music-btn" type="button">Ativar música</button>
 
     <div id="screen-enter" class="page active">
-        <p class="eyebrow">Um cantinho só seu</p>
-        <h1>Bem-vinda, Nana</h1>
-        <p class="lead">Uma página especial feita com carinho, só para você.</p>
-        <div class="divider"></div>
-        <p>Espero que goste de cada detalhe.</p>
-        <button class="btn btn-accent" onclick="startExperience()" type="button">Entrar</button>
+        <h1>Bem-vinda Nana!</h1>
+        <p>Uma página especial feita só para você, espero que goste!</p>
+        <button class="btn" id="btn-enter" type="button">Clique para Entrar</button>
     </div>
 
     <div id="page-1" class="page">
-        <p class="eyebrow">Olá</p>
-        <h1>Que bom ter você aqui</h1>
-        <p class="lead">Bem-vinda ao seu pequeno cantinho na internet — um mimo feito com carinho.</p>
-        <div class="divider"></div>
-        <p>Dá uma olhada no que preparei...</p>
-        <button class="btn" onclick="goToPage(2)" type="button">Continuar</button>
+        <h1>Olá, Nana!</h1>
+        <p>Bem-vinda ao seu pequeno cantinho pessoal da internet, pequeno mimo aahhhhh</p>
+        <p>Dê uma olhada...</p>
+        <button class="btn" id="btn-page-2" type="button">Ver a próxima página</button>
     </div>
 
     <div id="page-2" class="page">
-        <p class="eyebrow">Coisas que você ama</p>
-        <h1>Um dia, quem sabe, estarei aí também</h1>
+        <h1>Coisas que você ama, espero um dia estar aqui hihi</h1>
         <p>
-            E eu sei... que você pensa que o futuro é imprevisível.
-            Mas eu acho que algumas coisas no futuro você pode escolher.
-            E você sabe do que estou falando.
+            E eu sei... que você pensa que o futuro  Ele é imprevisível.
+            Mas... eu acho que algumas coisas no futuro você pode escolher.
+            E você sabe o que estou falando.
         </p>
         <div class="likes-grid">
-            <div class="like-item"><img class="photo-placeholder" src="assets/livro.jpg" alt="Capa do livro Orgulho e Preconceito">Livro: Orgulho e Preconceito</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/chevette.png" alt="Chevette antigo">Chevette antigo</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/flores.jpg" alt="Flores bonitas">Flores</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/pordosol.png" alt="Pôr do sol em São Tomé das Letras">Pôr do sol — São Tomé das Letras</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/piscina.png" alt="Momento na piscina com sorvete">Piscina</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/pizza-sorvete.jpg" alt="Pizza e sorvete">Pizza &amp; sorvete</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/bolo-chocolate.jpg" alt="Bolo de chocolate">Bolo de chocolate</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/amigos.png" alt="Família e amigos juntos">Família &amp; amigos</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/palmeiras.jpg" alt="Imagem do Palmeiras">Palmeiras</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/gatos.jpg" alt="Gatinhos">Gatos</div>
-            <div class="like-item"><div class="photo-placeholder empty" aria-hidden="true">🧘</div>Fazer yoga</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/estrada.png" alt="Estrada de terra com paisagem linda">Estrada de terra + paisagem linda</div>
-            <div class="like-item"><img class="photo-placeholder" src="assets/taylor-1989.png" alt="Capa do 1989 Taylor's Version">Taylor, filmes românticos e boas histórias</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/livro.jpg" alt="Capa do livro Orgulho e Preconceito">Livro: Orgulho e Preconceito 📚</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/chevette.png" alt="Chevette antigo">Chevette antigo 🏎️</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/flores.jpg" alt="Flores bonitas">Flores 🌸</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/pordosol.png" alt="Pôr do sol em São Tomé das Letras">Pôr do Sol (São Tomé das Letras) 🌅</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/piscina.png" alt="Momento na piscina com sorvete">Piscina 🏊‍♀️</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/pizza-sorvete.jpg" alt="Pizza e sorvete">Pizza & Sorvete 🍕🍦</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/bolo-chocolate.jpg" alt="Bolo de chocolate">Bolo de chocolate kkkkk 🍫</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/amigos.png" alt="Família e amigos juntos">Família & Amigos 🥹</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/palmeiras.jpg" alt="Imagem bonita do Palmeiras">Palmeiraaas 🟢⚪</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/gatos.jpg" alt="Gatinhos">Gatos 🐈</div>
+            <div class="like-item"><div class="photo-placeholder">Foto</div>Fazer Yoga 🧘‍♀️</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/estrada.png" alt="Estrada de terra com paisagem linda">Estrada de terra + paisagem linda 🛣️</div>
+            <div class="like-item"><img class="photo-placeholder" src="assets/taylor-1989.png" alt="Capa do 1989 Taylor's Version">Taylor: Lover, Enchanted, You Belong With Me + Filmes: Diário de uma Paixão, Como Eu Era Antes de Você 🎬</div>
         </div>
-        <button class="btn btn-accent" onclick="goToPage(3)" type="button">Só mais uma coisa...</button>
+        <button class="btn" id="btn-page-3" type="button">Só mais uma coisa...</button>
     </div>
 
     <div id="page-3" class="page">
-        <p class="eyebrow">Uma pergunta</p>
-        <h1>Eu tenho algo para te perguntar</h1>
-        <p class="lead">
-            Você aceita ir a um encontro comigo?
-            Não sei quando vai rolar, mas pode ter certeza de que vou esperar por você.
-        </p>
-        <img class="photo-placeholder page-3-photo" src="assets/sorriso.png" alt="Esse sorrisinho que me ganhou">
-        <p class="caption">esse sorrisinho</p>
+        <h1>Eu tenho uma pergunta...</h1>
+        <p>Você aceita ir a um encontro comigo? não sei quando vai rolar, mas tenha a ctz que vou esperar por você hihi</p>
+        <img class="photo-placeholder page-3-photo" src="assets/nos-juntos.png" alt="Nós dois">
+        <p>nossa fotonaaaa💜</p>
 
         <div class="invite-buttons">
-            <button id="btn-yes" class="btn" onclick="sayYes()" type="button">Sim!</button>
+            <button id="btn-yes" class="btn" type="button">Sim!</button>
             <button id="btn-no" class="btn" type="button">Não</button>
         </div>
     </div>
 
     <script>
-        let musicStarted = false;
-
-        function startMusic() {
-            if (musicStarted) return;
+        document.addEventListener('DOMContentLoaded', function () {
             const music = document.getElementById('bg-music');
-            music.volume = 0.1;
-            music.play()
-                .then(() => { musicStarted = true; })
-                .catch(() => {
-                    alert('Não foi possível iniciar a música. Verifique se o arquivo MP3 está em assets e tente novamente.');
+            const musicBtn = document.getElementById('music-btn');
+            let musicStarted = false;
+
+            async function startMusic() {
+                if (!music) return false;
+
+                try {
+                    music.volume = 0.15;
+
+                    if (music.readyState < 2) {
+                        music.load();
+                        await new Promise(function (resolve, reject) {
+                            music.addEventListener('canplaythrough', resolve, { once: true });
+                            music.addEventListener('error', reject, { once: true });
+                        });
+                    }
+
+                    await music.play();
+                    musicStarted = true;
+                    musicBtn.textContent = '♪ Música ligada';
+                    return true;
+                } catch (err) {
+                    console.error('Erro ao tocar música:', err);
+                    musicBtn.textContent = 'Tentar música de novo';
+                    return false;
+                }
+            }
+
+            function startExperience() {
+                startMusic();
+                document.getElementById('screen-enter').classList.remove('active');
+                document.getElementById('page-1').classList.add('active');
+            }
+
+            function goToPage(pageNumber) {
+                document.querySelectorAll('.page').forEach(function (page) {
+                    page.classList.remove('active');
                 });
-        }
+                document.getElementById('page-' + pageNumber).classList.add('active');
+            }
 
-        function startExperience() {
-            startMusic();
-            document.getElementById('screen-enter').classList.remove('active');
-            document.getElementById('page-1').classList.add('active');
-        }
+            function sayYes() {
+                const phoneNumber = '5534987213997';
+                const message = encodeURIComponent('Eu aceito ir nesse encontro com você.');
+                window.location.href = 'https://wa.me/' + phoneNumber + '?text=' + message;
+            }
 
-        function goToPage(pageNumber) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById('page-' + pageNumber).classList.add('active');
-        }
+            musicBtn.addEventListener('click', startMusic);
+            document.getElementById('btn-enter').addEventListener('click', startExperience);
+            document.getElementById('btn-page-2').addEventListener('click', function () { goToPage(2); });
+            document.getElementById('btn-page-3').addEventListener('click', function () { goToPage(3); });
+            document.getElementById('btn-yes').addEventListener('click', sayYes);
 
-        function sayYes() {
-            const phoneNumber = '5534987213997';
-            const message = encodeURIComponent('Eu aceito ir nesse encontro com você.');
-            window.location.href = `https://wa.me/${phoneNumber}?text=${message}`;
-        }
+            const btnNo = document.getElementById('btn-no');
+            if (btnNo) {
+                btnNo.addEventListener('mouseover', function () {
+                    const windowWidth = window.innerWidth;
+                    const windowHeight = window.innerHeight;
+                    const btnWidth = btnNo.offsetWidth;
+                    const btnHeight = btnNo.offsetHeight;
+                    const randomX = Math.random() * (windowWidth - btnWidth);
+                    const randomY = Math.random() * (windowHeight - btnHeight);
 
-        const btnNo = document.getElementById('btn-no');
-
-        btnNo.addEventListener('mouseover', function () {
-            const windowWidth = window.innerWidth;
-            const windowHeight = window.innerHeight;
-            const btnWidth = btnNo.offsetWidth;
-            const btnHeight = btnNo.offsetHeight;
-            const randomX = Math.random() * (windowWidth - btnWidth);
-            const randomY = Math.random() * (windowHeight - btnHeight);
-
-            btnNo.style.position = 'fixed';
-            btnNo.style.left = randomX + 'px';
-            btnNo.style.top = randomY + 'px';
+                    btnNo.style.position = 'fixed';
+                    btnNo.style.left = randomX + 'px';
+                    btnNo.style.top = randomY + 'px';
+                });
+            }
         });
     </script>
 </body>
